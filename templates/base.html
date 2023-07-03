@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="ko">
+{% include 'head.html' %}
 <body>
-accountapp view 연결되었습니다!
+   {% include 'header.html' %} <!--헤더 부분 include-->
+
+   {% block content %} <!-- content라는 블록을 만들어줌, 어디까지 블럭인지 명시 -->
+   {% endblock %}
+
+   {% include 'footer.html' %} <!--footer 부분 include-->
 </body>
 </html>
