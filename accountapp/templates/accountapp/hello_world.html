@@ -10,17 +10,23 @@
             margin: 1rem;
         }
     </style>
-  <div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
-      <h1> testing </h1>
+  <div style=" border-radius: 1rem; margin: 2rem; text-align:center">
+      <h1 class="babd_logo"> Hello World LIST! </h1>
 <!--우리가 만든 url-->
       <form action="/account/hello_world/" method="post">
 <!--토큰 자동 생성, 항상 작성하기 -->
           {% csrf_token %}
+          <DIV>
+              <input type="text" name="hello_world_input">
+          </DIV>
 <!--primary 색을 가진 버튼-->
           <input type="submit" class="btn btn-primary" value="POST">
       </form>
+      {% if hello_world_output %}
       <H1>
-          {{ text }}
+          {{ hello_world_output.text }}
       </H1>
+<!--if문 끝내주기-->
+      {%endif%}
   </div>
 {% endblock %}
