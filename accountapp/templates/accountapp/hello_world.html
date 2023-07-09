@@ -12,11 +12,15 @@
     </style>
   <div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
       <h1> testing </h1>
-<!--inline: 옆으로 쌓임-->
-    <div class="testing" style="display:inline-block; width:48px;height:48px;">inline</div>
-      <div class="testing" style="display:inline-block;width:3em;height:3em;">inline</div>
-      <div class="testing" style="display:inline-block;width:3rem;height:3rem;">inline</div>
-<!--여기까지는 크기가 같음, 최상위 태그: <html>-->
-      <div class="testing" style="display:inline-block;width:30%;height:30%;">inline</div>
+<!--우리가 만든 url-->
+      <form action="/account/hello_world/" method="post">
+<!--토큰 자동 생성, 항상 작성하기 -->
+          {% csrf_token %}
+<!--primary 색을 가진 버튼-->
+          <input type="submit" class="btn btn-primary" value="POST">
+      </form>
+      <H1>
+          {{ text }}
+      </H1>
   </div>
 {% endblock %}
