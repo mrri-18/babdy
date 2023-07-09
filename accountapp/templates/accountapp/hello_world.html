@@ -1,7 +1,22 @@
 {% extends 'base.html' %} <!--블럭 컨텐츠 내용만 바꿀 수 있고 그외 내용은 base html 파일에서 가져올 수 있음 -->
 
 {% block content %}
+
+    <style>
+        .testing{
+            background-color:white;
+            height: 3rem;
+            width: 3rem;
+            margin: 1rem;
+        }
+    </style>
   <div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
       <h1> testing </h1>
+<!--inline: 옆으로 쌓임-->
+    <div class="testing" style="display:inline-block; width:48px;height:48px;">inline</div>
+      <div class="testing" style="display:inline-block;width:3em;height:3em;">inline</div>
+      <div class="testing" style="display:inline-block;width:3rem;height:3rem;">inline</div>
+<!--여기까지는 크기가 같음, 최상위 태그: <html>-->
+      <div class="testing" style="display:inline-block;width:30%;height:30%;">inline</div>
   </div>
 {% endblock %}
