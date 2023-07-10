@@ -22,10 +22,12 @@
 <!--primary 색을 가진 버튼-->
           <input type="submit" class="btn btn-primary" value="POST">
       </form>
-      {% if hello_world_output %}
-      <H1>
-          {{ hello_world_output.text }}
-      </H1>
+      {% if hello_world_list %}
+      {% for hello_world in hello_world_list %}
+      <H4>
+          {{ hello_world.text }}
+      </H4>
+      {%endfor%}
 <!--if문 끝내주기-->
       {%endif%}
   </div>
