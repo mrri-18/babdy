@@ -1,6 +1,9 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView
 
 # Create your views here.
 from accountapp.models import Helloworld
@@ -22,3 +25,8 @@ def hello_world(request):
         return render(request, 'accountapp/hello_world.html', context={'hello_world_list':hello_world_list})
 
 
+class AccountCreateView(CreateView):
+    model = User #장고 기본 제공 모델
+    form_class = UserCreationForm
+    success_url = reverse_lazy('accountapp:hello_world') #class에서 리버스를 그대로 사용할 수 없음.
+    template_name = 'accountapp/create.html'
