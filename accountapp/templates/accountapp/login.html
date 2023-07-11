@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block content%}
-<div style="text-align:center">
+<div style="text-align:center; max-width: 500px; margin: 3rem auto">
 
   <div>
     <h4>login </h4>
   </div>
-  <div>
+  <div style="margin: 0rem auto">
     <form action="" method="post">
       {% csrf_token %}
-      {{ form }}
-      <input type="submit" class="btn btn-primary">
+      {% bootstrap_form form%}
+<!-- col max: 12 (부모의 크기)-->
+      <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
     </form>
     </div>
 </div>
