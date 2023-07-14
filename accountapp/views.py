@@ -3,10 +3,13 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 # Create your views here.
 from accountapp.models import Helloworld
+from accountapp.templates.accountapp.forms import AccountUpdateForm
+
+
 def hello_world(request):
 
     if request.method == "POST": #POST METHOD를 요청받을 경우
@@ -15,7 +18,7 @@ def hello_world(request):
          new_hello_world=Helloworld()
          new_hello_world.text=temp
          new_hello_world.save() #db에 객체가 저장됨.
-         hello_world_list=Helloworld.objects.all()
+
 
          # 텍스트라는 이름에 내용은 POST METHOD! CONTEXT= 데이터 꾸러미, post method가 뜬다= 정상적으로 post 요청을 보내고 응답을 받은 것
          return HttpResponseRedirect(reverse('accountapp:hello_world')) #account/hello_world로 재접속하게하는 response를 보내줌.
@@ -34,3 +37,14 @@ class AccountDetailView(DetailView):
     model = User
     template_name = 'accountapp/detail.html'
     context_object_name = 'target_user'
+class AccountUpdateView(UpdateView):
+    model = User #장고 기본 제공 모델
+    context_object_name = 'target_user'
+    form_class = AccountUpdateForm
+    success_url = reverse_lazy('accountapp:hello_world') #class에서 리버스를 그대로 사용할 수 없음.
+    template_name = 'accountapp/update.html'
+class AccountDeleteView(DeleteView):
+    model = User
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('accountapp:login')
+    template_name = 'accountapp/delete.html'
