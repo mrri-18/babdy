@@ -121,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]  # new
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -131,3 +131,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL=reverse_lazy('accountapp:hello_world')
 LOGOUT_REDIRECT_URL=reverse_lazy('accountapp:login')
+
+MEDIA_URL = "/media/" #미디어 파일을 서버에 올렸을 때 루트를 지정
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
