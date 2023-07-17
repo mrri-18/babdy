@@ -7,9 +7,20 @@
     <p>
       {{ target_user.date_joined }}
     </p>
-    <h2 style="font-family: NanumSquareNeoExtraBold">
+    <h3>
       {{ target_user.username }}
+    </h3>
+
+    {% if target_user.profile %}
+    <h2 style="font-family: NanumSquareNeoExtraBold">
+      {{ target_user.profile.nickname }}
     </h2>
+    {% else %}
+    <a href="{% url 'profileapp:create' %}">
+      <h2 style="font-family: NanumSquareNeoExtraBold">Create Profile</h2>
+    </a>
+    {% endif %}
+
     {% if target_user == user %}
     <a href="{% url 'accountapp:update' pk=user.pk %}">
       <p>
