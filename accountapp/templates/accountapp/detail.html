@@ -4,21 +4,29 @@
 
 <div>
   <div style="text-align: center; max-width: 500px; margin: 3rem auto">
-    <p>
-      {{ target_user.date_joined }}
-    </p>
-    <h3>
-      {{ target_user.username }}
-    </h3>
 
     {% if target_user.profile %}
     <h2 style="font-family: NanumSquareNeoExtraBold">
       {{ target_user.profile.nickname }}
+      {% if target_user == user %}
+      <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">edit</a>
+      {% endif %}
     </h2>
+    <p>
+      {{ target_user.date_joined }}
+    </p>
+    <img src="{{target_user.profile.image.url}}" alt="" STYLE="height: 10rem; width: 4rem; border-radius: 10rem; margin-bottom: 1.5rem; ">
+    <h4 style="margin-bottom: 3rem; ">
+      {{target_user.profile.message}}
+    </h4>
     {% else %}
+    {% if target_user == user %}
     <a href="{% url 'profileapp:create' %}">
       <h2 style="font-family: NanumSquareNeoExtraBold">Create Profile</h2>
     </a>
+    {% else %}
+    <h4>프로필 미설정</h4>
+    {% endif %}
     {% endif %}
 
     {% if target_user == user %}

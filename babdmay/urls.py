@@ -14,6 +14,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
@@ -23,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('accountapp.urls')),
     path('profiles/',include('profileapp.urls')),
+    path('articles/', include('articleapp.urls')),
 
     # accountapp.urls 모듈에서 정의된 URL 패턴이 /account/ 경로를 시작으로 매칭될 수 있도록 하는 것
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#MEDIA파일에 사진 저장이 가능.
