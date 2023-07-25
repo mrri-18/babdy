@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load static %}
 {% block content %}
 <style>
@@ -31,6 +32,11 @@
   <div class="item11"><img src="https://picsum.photos/200/350"></div>
   <div class="item12"><img src="https://picsum.photos/200/360"></div>
   <div class="item13"><img src="https://picsum.photos/200/250"></div>
+</div>
+<div style="text-align: center;">
+  <a href="{% url 'articleapp:create' %}"} class="btn btn-dark rounded-pill col-3 mt-3 mn-3">
+    Create Article
+  </a>
 </div>
 <script src="{% static 'js/magicgrid.js'%}">
 
