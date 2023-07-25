@@ -16,29 +16,28 @@
   border-radius: 1rem;
 }
 </style>
+{% if article_list %}
 <div class="container">
-  <div class="item1">
-    <img src="https://picsum.photos/200/300">
-  </div>
-  <div class="item2"><img src="https://picsum.photos/200/320"></div>
-  <div class="item3"><img src="https://picsum.photos/200/310"></div>
-  <div class="item4"><img src="https://picsum.photos/200/220"></div>
-  <div class="item5"><img src="https://picsum.photos/200/240"></div>
-  <div class="item6"><img src="https://picsum.photos/200/230"></div>
-  <div class="item7"><img src="https://picsum.photos/200/320"></div>
-  <div class="item8"><img src="https://picsum.photos/200/290"></div>
-  <div class="item9"><img src="https://picsum.photos/200/280"></div>
-  <div class="item10"><img src="https://picsum.photos/200/370"></div>
-  <div class="item11"><img src="https://picsum.photos/200/350"></div>
-  <div class="item12"><img src="https://picsum.photos/200/360"></div>
-  <div class="item13"><img src="https://picsum.photos/200/250"></div>
+ {%for article in article_list%}
+  <a href="{% url 'articleapp:detail' pk=article.pk %}">
+   {% include 'snippets/card.html' with article=article %}
+<!--with 구문을 쓰면서 card.html의 article이랑 현재 article이 같은 의미이다.-->
+  </a>
+    {%endfor%}
 </div>
+<script src="{% static 'js/magicgrid.js'%}"></script>
+{%else%}
+<div>
+    <h1>
+        No Article YET!
+    </h1>
+</div>
+{%endif%}
+{% include 'snippets/pagination.html' with page_obj=page_obj %}
+
 <div style="text-align: center;">
   <a href="{% url 'articleapp:create' %}"} class="btn btn-dark rounded-pill col-3 mt-3 mn-3">
     Create Article
   </a>
 </div>
-<script src="{% static 'js/magicgrid.js'%}">
-
-</script>
 {% endblock %}
