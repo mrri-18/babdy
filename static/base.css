@@ -10,3 +10,10 @@
 .babd_header{
     text-align:center; margin:2rem;
 }
+/*스크린 사이즈가 500픽셀 이하로 떨어지면 아래 적용*/
+@media screen and (max-width:500px){
+    html{
+        font-size:10px;
+    }
+
+}

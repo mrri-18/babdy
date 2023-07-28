@@ -3,9 +3,17 @@
 {% load static %}
 {% block content %}
 <style>
+    .container{
+        padding: 0;
+<!--위아래 마진은 제로, 좌우는 중앙 정렬-->
+        margin:0 auto;
+    }
+    .container a {
+<!--모바일의 경우 45퍼센트, pc의 경우 보통 맥스 너비로 해당됨.-->
+    width:45%;
+    max-width:250px;
+    }
    .container div {
-  width: 280px;
-  background-color: antiquewhite;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +44,7 @@
 {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
 <div style="text-align: center;">
-  <a href="{% url 'articleapp:create' %}"} class="btn btn-dark rounded-pill col-3 mt-3 mn-3">
+  <a href="{% url 'articleapp:create' %}"} class="btn btn-dark rounded-pill mt-3 mn-3 px-2">
     Create Article
   </a>
 </div>

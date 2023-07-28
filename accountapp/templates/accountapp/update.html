@@ -6,7 +6,6 @@
   <div class="mb-4">
     Change Info
   </div>
-<!--함수 기반에서 reverse와 유사-->
   <form action="{% url 'accountapp:update' pk=target_user.pk%}" method="post">
     {% csrf_token %}
     {% bootstrap_form form%}
