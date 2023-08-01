@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic.list import MultipleObjectMixin
 
+from articleapp.models import Article
 from projectapp.forms import ProjectCreationForm
 from projectapp.models import Project
 
@@ -19,10 +21,15 @@ class ProjectCreateView(CreateView):
         #프로필(모델)의 user pk를 넘겨줌.
         return reverse('projectapp:detail', kwargs={'pk':self.object.pk})
 
-class ProjectDetailView(DetailView):
+class ProjectDetailView(DetailView,MultipleObjectMixin):
     model = Project
     context_object_name = 'target_project'
     template_name = 'projectapp/detail.html'
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        object_list=Article.objects.filter(project=self.get_object())#현재 같은 프로젝트인 아티클들만 필터링
+        return super(ProjectDetailView,self).get_context_data(object_list=object_list, **kwargs)
 
 class ProjectListView(ListView):
     model = Project

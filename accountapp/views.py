@@ -12,6 +12,7 @@ from accountapp.decorator import account_ownership_required
 # Create your views here.
 from accountapp.models import Helloworld
 from accountapp.forms import AccountUpdateForm
+from articleapp.models import Article
 
 has_ownership=[account_ownership_required, login_required]
 
@@ -55,7 +56,10 @@ class AccountDetailView(DetailView):
     model = User
     template_name = 'accountapp/detail.html'
     context_object_name = 'target_user'
-
+    paginate_by=10
+    def get_context_data(self, **kwargs):
+        object_list=Article.objects.filter(writer=self.get_object())#현재 같은 프로젝트인 아티클들만 필터링
+        return super(AccountDetailView,self).get_context_data(object_list=object_list, **kwargs)
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')#일반 함수에 사용하는 데코레이터를 method에도 사용할 수 있도록 함.
 class AccountUpdateView(UpdateView):

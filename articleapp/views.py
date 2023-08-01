@@ -33,6 +33,7 @@ class ArticleDetailView(DetailView, FormMixin):
     context_object_name = 'target_article'
     template_name = 'articleapp/detail.html'
 
+
 @method_decorator(article_ownership_required, 'get')
 @method_decorator(article_ownership_required, 'post')
 # Create your views here.
@@ -55,4 +56,4 @@ class ArticleListView(ListView):
     model = Article
     context_object_name = 'article_list'
     template_name = 'articleapp/list.html'
-    paginate_by = 3
+    paginate_by = 5
