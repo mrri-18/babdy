@@ -28,6 +28,7 @@ urlpatterns = [
     path('articles/', include('articleapp.urls')),
     path('comments/', include('commentapp.urls')),
     path('projects/', include('projectapp.urls')),
+    path('subscribe/', include('subscribeapp.urls')),
 
     # accountapp.urls 모듈에서 정의된 URL 패턴이 /account/ 경로를 시작으로 매칭될 수 있도록 하는 것
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

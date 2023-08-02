@@ -12,6 +12,19 @@
     <h5 style="margin-bottom:2rem;">
       {{target_project.description}}
     </h5>
+    <div class="text-cente mb-5">
+      {% if user.is_authenticated%}
+        {% if not subscription %}
+      <a href="{% url 'subscribeapp:subscribe'%}?project_pk={{ target_project.pk}}" class="btn btn-dark rounded-pill px-4">
+        Subscribe
+      </a>
+        {%else%}
+           <a href="{% url 'subscribeapp:subscribe'%}?project_pk={{ target_project.pk}}" class="btn btn-light rounded-pill px-4">
+          Undo
+           </a>
+      {%endif%}
+      {%endif%}
+    </div>
     <div>
       {% include 'snippets/list_babdy.html' with article_list=object_list%}
     </div>
