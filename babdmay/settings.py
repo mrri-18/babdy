@@ -133,7 +133,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL=reverse_lazy('accountapp:hello_world')
+LOGIN_REDIRECT_URL=reverse_lazy('home')
 LOGOUT_REDIRECT_URL=reverse_lazy('accountapp:login')
 
 MEDIA_URL = "/media/" #미디어 파일을 서버에 올렸을 때 루트를 지정

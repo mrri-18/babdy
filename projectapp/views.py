@@ -34,6 +34,8 @@ class ProjectDetailView(DetailView,MultipleObjectMixin):
 
         if user.is_authenticated:
             subscription=Subscription.objects.filter(user=user, project=project)
+        else:
+            subscription=None
         object_list=Article.objects.filter(project=self.get_object())#현재 같은 프로젝트인 아티클들만 필터링
         return super(ProjectDetailView,self).get_context_data(object_list=object_list,subscription=subscription, **kwargs)
 
