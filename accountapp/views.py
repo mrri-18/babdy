@@ -15,7 +15,8 @@ from articleapp.models import Article
 
 has_ownership=[account_ownership_required, login_required]
 
-
+def hello_world(request):
+    return render(request, 'hello_world.html')
 def change_pw(request,pk):
     context = {}
     if request.method == "POST":
