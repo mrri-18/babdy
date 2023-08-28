@@ -36,7 +36,7 @@ def change_pw(request,pk):
 class AccountCreateView(CreateView):
     model = User #장고 기본 제공 모델
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world') #class에서 리버스를 그대로 사용할 수 없음.
+    success_url = reverse_lazy('articleapp:list') #class에서 리버스를 그대로 사용할 수 없음.
     template_name = 'accountapp/create.html'
 class AccountDetailView(DetailView):
     model = User
