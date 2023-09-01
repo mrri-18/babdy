@@ -9,18 +9,18 @@
 
  <div class="babd_header">
      <div>
-         <h1 class="babd_logo" >HelloWorldApp</h1>
+         <h1 class="babd_logo" >Photato</h1>
      </div>
      <div class="font">
          <a href="{% url 'articleapp:list'%}"><span>List</span></a>
-         <a href="{% url 'projectapp:list'%}"><span>Porject</span></a>
+         <a href="{% url 'projectapp:list'%}"><span>Project</span></a>
          <a href="{% url 'subscribeapp:list'%}"><span>Subscribe</span></a>
          {% if not user.is_authenticated %}
-         <a href="{% url 'accountapp:login'%}"><span>login</span></a>
+         <a href="{% url 'accountapp:login'%}"><span>Login</span></a>
          <a href="{% url 'accountapp:create'%}"><span>Sign up</span></a>
          {%else%}
          <a href="{% url 'accountapp:detail' pk=user.pk%}"><span>My Page</span></a>
-         <a href="{% url 'accountapp:logout'%}"><span>logout</span></a>
+         <a href="{% url 'accountapp:logout'%}"><span>Logout</span></a>
          {% endif %}
      </div>
  </div>
