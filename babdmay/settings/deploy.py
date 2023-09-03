@@ -8,6 +8,7 @@ def read_secret(secret_name):
     secret = secret.rstrip().lstrip()
     file.close()
     return secret
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)

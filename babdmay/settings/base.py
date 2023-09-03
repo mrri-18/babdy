@@ -17,10 +17,6 @@ import os
 
 from django.urls import reverse_lazy
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
 
 
 # Application definition
