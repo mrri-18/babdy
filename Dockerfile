@@ -3,7 +3,7 @@ FROM python:3.9.0
 
 WORKDIR /home/
 
-RUN echo "도커시크릿adjust"
+RUN echo "도커 시크릿 적용"
 
 RUN git clone https://github.com/mrri-18/babdy.git
 
